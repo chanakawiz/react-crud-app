@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Create from "./components/create.components";
 import Edit from "./components/edit.components";
-import Index from "./components/edit.components";
+import Index from "./components/index.components";
 
 class App extends Component {
   render() {
@@ -19,7 +19,7 @@ class App extends Component {
             <div
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
-              
+
             >
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
@@ -44,9 +44,9 @@ class App extends Component {
           <br />
 
           <Switch>
-            <Route exact path="/edit" component={Edit} />
-            <Route exact path="/index" component={Index} />
-            <Route exact path="/create" component={Create} />
+            <Route path="/edit" component={Edit} />
+            <Route path="/index" component={Index} />
+            <Route path="/create" component={Create} />
           </Switch>
         </div>
       </Router>

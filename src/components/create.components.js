@@ -1,17 +1,18 @@
 import React, { Component } from "react";
+import axios from 'axios';
 
 export default class Create extends Component {
   constructor(props) {
     super(props);
     this.onChangePersonName = this.onChangePersonName.bind(this);
-    this.onChangeBuisnessName = this.onChangeBuisnessName.bind(this);
+    this.onChangeBusinessName = this.onChangeBusinessName.bind(this);
     this.onChangeNICNumber = this.onChangeNICNumber.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      person_name: "",
-      buisness_name: "",
-      buisness_nic_number: "",
+      person_name: '',
+      business_name: '',
+      business_nic_number: '',
     };
   }
 
@@ -21,34 +22,40 @@ export default class Create extends Component {
     });
   }
 
-  onChangeBuisnessName(e) {
+  onChangeBusinessName(e) {
     this.setState({
-      buisness_name: e.target.value,
+      business_name: e.target.value,
     });
   }
 
   onChangeNICNumber(e) {
     this.setState({
-      buisness_nic_number: e.target.value,
+      business_nic_number: e.target.value,
     });
   }
 
+
   onSubmit(e) {
     e.preventDefault();
-    console.log(
-      `the values are ${this.state.person_name},${this.state.buisness_name} and ${this.state.buisness_nic_number}`
-    );
+    const obj = {
+      person_name: this.state.person_name,
+      business_name: this.state.business_name,
+      business_nic_number: this.state.business_nic_number,
+    };
+    axios.post('http://localhost:4000/business/add', obj).then(res => console.log(res.data));
+
     this.setState({
-      person_name: "",
-      buisness_name: "",
-      buisness_nic_number: "",
-    });
+      person_name: '',
+      business_name: '',
+      business_nic_number: '',
+    })
   }
+
 
   render() {
     return (
       <div style={{ marginTop: 10 }}>
-        <h2>Add New Buisness </h2>
+        <h2>Add New Business </h2>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Add Person Name</label>
@@ -61,12 +68,12 @@ export default class Create extends Component {
           </div>
           <br />
           <div className="form-group">
-            <label>Add Buisness name</label>
+            <label>Add Business name</label>
             <input
               type="text"
               className="form-control"
-              value={this.state.buisness_name}
-              onChange={this.onChangeBuisnessName}
+              value={this.state.business_name}
+              onChange={this.onChangeBusinessName}
             />
           </div>
           <br />
@@ -75,7 +82,7 @@ export default class Create extends Component {
             <input
               type="text"
               className="form-control"
-              value={this.state.buisness_nic_number}
+              value={this.state.business_nic_number}
               onChange={this.onChangeNICNumber}
             />
           </div>
@@ -83,7 +90,7 @@ export default class Create extends Component {
           <div className="form-group">
             <input
               type="submit"
-              value="Register Buisness name"
+              value="Register Business name"
               className="btn btn-primary"
             />
           </div>

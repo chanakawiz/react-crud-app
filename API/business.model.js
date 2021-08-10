@@ -21,4 +21,4 @@ let Business = new Schema({
     }
 );
 
-module.exports = mongoose.model('business', Business);
+module.exports = mongoose.model('Business', Business);

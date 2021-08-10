@@ -1,11 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-export default class Edit extends Component {
-  render() {
-    return (
-      <div className="container">
-        <h2>welcome to edit component </h2>
-      </div>
-    );
-  }
+export default class EditComponent extends Component {
+    render() {
+        return (
+            <div><h1>edit component here</h1></div>
+        )
+    }
 }
